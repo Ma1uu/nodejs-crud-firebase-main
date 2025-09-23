@@ -1,0 +1,19 @@
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h1 class="h4 mb-3">Novo Usuário</h1>
+    <form method="POST" action="/usuarios/create" class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Nome</label>
+        <input type="text" name="nome" class="form-control" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" required>
+      </div>
+      <div class="col-12">
+        <a href="/usuarios" class="btn btn-outline-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
