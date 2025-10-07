@@ -1,21 +1,29 @@
 <h3>Lista de Alunos</h3>
 <a href="/alunos/add" class="btn btn-primary mb-3">Adicionar</a>
 <table class="table table-bordered table-striped table-sm">
-    <thead>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (!alunos || alunos.length === 0) { %>
+      <tr>
+        <td colspan="3" class="text-center">Nenhum aluno cadastrado.</td>
+      </tr>
+    <% } else { %>
+      <% alunos.forEach(aluno => { %>
         <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Ações</th>
+          <td><%= aluno.nome %></td>
+          <td><%= aluno.descricao %></td>
+          <td class="text-end">
+            <a href="#"><i class="bi bi-pencil-fill"></i></a>
+            <a href="#"><i class="bi bi-trash-fill"></i></a>
+          </td>
         </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>
-                <a href="#"><i class="bi bi-pencil-fill"></i></a>
-                <a href="#"><i class="bi bi-trash-fill"></i></a>
-            </td>
-        </tr>
-    </tbody>
+      <% }) %>
+    <% } %>
+  </tbody>
 </table>

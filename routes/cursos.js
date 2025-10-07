@@ -1,17 +1,12 @@
 import express from "express";
-import cursosController from "../controllers/CursosController.js";
+import * as cursosController from "../controllers/CursosController.js";
 
 const router = express.Router();
 
-//listar categoria
-router.get("/", async (req, res)=> {  // router - rota | "/" - rota raiz | render - montar/construir
-    res.render("base", {
-        title: "Listar Cursos",
-        view: "cursos/show",
-    })
-});
+//listar curso
+router.get("/", cursosController.list);
 
-//edit categoria
+//edit curso
 router.get("/edit", async (req, res)=> {  // router - rota | "/edit" - rota atual | render - montar/construir
     res.render("base", {
         title: "Editar Cursos",
@@ -19,7 +14,7 @@ router.get("/edit", async (req, res)=> {  // router - rota | "/edit" - rota atua
     })
 });
 
-//add categoria
+//add curso
 router.get("/add", cursosController.createForm);
 
 router.post("/add", cursosController.create);

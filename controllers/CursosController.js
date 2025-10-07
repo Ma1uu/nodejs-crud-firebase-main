@@ -1,36 +1,48 @@
 
+// Importa a instância do Realtime Database já inicializada (config/firebase.js)
 import { db } from "../config/firebase.js";
 
-import { ref, get, push, set, child, update, remove } from "firebase/database";
+// Importa funções do Web SDK do Realtime Database usadas no CRUD
+import { ref, push, set, onValue } from "firebase/database";
 
+// Cria uma referência "raiz" para o nó/coleção "cursos" no banco
 const rootRef = ref(db, "cursos");
 
-export default {
-  async list(req, res) {
+// Exporta o controller como módulo ES (usado nas rotas)
+
+  // [READ] Lista todas os alunos
+  export function list(req, res) {
+  const cursosRef = ref(db, "cursos");
+  onValue(cursosRef, (snapshot) => {
+    const data = snapshot.val();
+    const cursos = data ? Object.values(data) : [];
     res.render("base", {
-      title: "Adicionar Cursos",
-      view: "cursos/add"
+      title: "Lista de Cursos",
+      view: "cursos/show",
+      cursos 
     });
-  },
+  }, { onlyOnce: true });
+}
 
-  createForm(req, res) {
-    res.render("base", { 
-      title: "Novo Curso",
-      view: "cursos/add" 
+  export function createForm(req, res) {
+    // Apenas renderiza a página de criação
+    res.render("base", {
+      title: " Adicionar Cursos",
+      view: "cursos/add",
     });
-  },
+  }
 
-  async create(req, res) {
+  // [CREATE - ACTION] Cria um curso novo
+  export async function create(req, res) {
     try {
     const { nome, descricao } = req.body;
-    const novo = push(rootRef); 
-    await set(novo, { nome }); 
-      res.redirect("/cursos");  
+    const cursosRef = ref(db, "cursos");
+    const novo = push(cursosRef); // Cria um novo registro com ID único
+      await set(novo, { nome, descricao }); // Salva os dados no DB 
+        res.redirect("/cursos");  
     } catch (e) {
       console.error("Erro ao realizar cadastro de curso", e);
       res.status(500).send("Erro ao cadastrar curso");
-      res.status(500).send("Erro ao cadastrar curso");
     }
    
-  },
-};
+  }

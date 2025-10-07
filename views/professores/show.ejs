@@ -1,5 +1,5 @@
-<h3>Lista de Cursos</h3>
-<a href="/cursos/add" class="btn btn-primary mb-3">Adicionar</a>
+<h3>Lista de Professores</h3>
+<a href="/professores/add" class="btn btn-primary mb-3">Adicionar</a>
 <table class="table table-bordered table-striped table-sm">
     <thead>
         <tr>
@@ -9,15 +9,15 @@
         </tr>
     </thead>
     <tbody>
-        <% if (!cursos || cursos.length === 0) { %>
+        <% if (!professores || professores.length === 0) { %>
             <tr>
-                <td colspan="3" class="text-center">Nenhum curso cadastrado.</td>
+                <td colspan="3" class="text-center">Nenhum professor cadastrado.</td>
             </tr>
         <% } else { %>
-            <% cursos.forEach(curso => { %>
+            <% professores.forEach(professor => { %>
                 <tr>
-                    <td><%= curso.nome %></td>
-                    <td><%= curso.descricao %> </td>
+                    <td><%= professor.nome %></td>
+                    <td><%= professor.descricao %> </td>
                     <td class="text-end">
                         <a href="#"><i class="bi bi-pencil-fill"></i></a>
                         <a href="#"><i class="bi bi-trash-fill"></i></a>
