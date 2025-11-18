@@ -1,8 +1,12 @@
-<h3>Adicionar Cursos</h3>
-<form action="/cursos/add" method="post">
-    <div class="form-group">
-        <label for="nome">Cursos</label>
-        <input type="text" name="nome" id="nome" class="form-control" required placeholder="Informe a categoria">
-        <button type="submit" class="btn btn-primary">Adicionar</button>
+<h1>Adicionar Cursos</h1> 
+<form action="/cursos/add" method="POST"> 
+    <div class="form-group"> 
+        <label for="nome">Curso</label> 
+        <input type="text" class="form-control" id="nome" name="nome" required> 
     </div>
+    <div class="form-group mt-2">
+        <label for="descricao">Descrição</label>
+        <textarea name="descricao" id="descricao" class="form-control" rows="3"></textarea>
+      </div>
+    <button type="submit" class="btn btn-primary">Adicionar</button> 
 </form> 

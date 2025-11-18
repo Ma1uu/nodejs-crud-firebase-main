@@ -24,6 +24,10 @@ app.use(express.static(path.join(__dirname, "public")));// arquivos estáticos
 import indexRouter from "./routes/index.js";
 app.use("/", indexRouter);
 
+//Rota de categoria
+import categoriaRouter from "./routes/categorias.js";
+app.use("/categorias", categoriaRouter); //todas as rotas que comecarem com /categoria vao ser direcionadas para o categoriaRouter
+
 //Rota de alunos
 import alunosRouter from "./routes/alunos.js";
 app.use("/alunos", alunosRouter);
