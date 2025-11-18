@@ -5,13 +5,13 @@
     
     <div class="form-group"> 
         <label for="nome">Nome</label> 
-            <input type="text" class="form-control" id="nome" name="nome" value="<%= aluno?.nome || '' %>" required> 
+        <input type="text" class="form-control" id="nome" name="nome" value="<%= aluno?.nome || '' %>" required> 
     </div> 
     
     <div class="form-group mt-2">
-        <label for="descricao">Descrição</label>
-            <textarea name="descricao" id="descricao" class="form-control" rows="3"><%= aluno?.descricao || '' %></textarea>
-        </div>
+        <label for="matricula">Matrícula</label>
+        <input type="text" name="matricula" id="matricula" class="form-control" value="<%= aluno?.matricula || '' %>" required>
+    </div>
     
     <button type="submit" class="btn btn-primary mt-3">Atualizar</button> 
 </form>

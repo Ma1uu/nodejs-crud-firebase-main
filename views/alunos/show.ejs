@@ -1,33 +1,33 @@
 <h3>Lista de Alunos</h3>
 <a href="/alunos/add" class="btn btn-primary mb-3">Adicionar</a>
 <table class="table table-bordered table-striped table-sm">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Descrição</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if (!alunos || alunos.length === 0) { %>
-      <tr>
-        <td colspan="3" class="text-center">Nenhum aluno cadastrado.</td>
-      </tr>
-    <% } else { %>
-      <% alunos.forEach(aluno => { %>
-        <tr>
-          <td><%= aluno.nome %></td>
-          <td><%= aluno.descricao %></td>
-          <td class="text-end">
-                            <a href="/alunos/edit?id=<%= aluno.id %>" class="me-2"><i class="bi bi-pencil-fill"></i></a>
-                
-                <form action="/alunos/delete" method="POST" style="display:inline;">
-                    <input type="hidden" name="id" value="<%= aluno.id %>">
-                    <button type="submit" class="btn btn-link p-0 m-0" onclick="return confirm('Remover este aluno?')"><i class="bi bi-trash-fill text-danger"></i></button>
-                </form>
-          </td>
-        </tr>
-      <% }) %>
-    <% } %>
-  </tbody>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Matrícula</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (!alunos || alunos.length === 0) { %>
+            <tr>
+                <td colspan="3" class="text-center">Nenhum aluno cadastrado.</td>
+            </tr>
+        <% } else { %>
+            <% alunos.forEach(aluno => { %>
+                <tr>
+                    <td><%= aluno.nome %></td>
+                    <td><%= aluno.matricula %></td>
+                    <td class="text-end">
+                        <a href="/alunos/edit?id=<%= aluno.id %>" class="me-2"><i class="bi bi-pencil-fill"></i></a>
+                        
+                        <form action="/alunos/delete" method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<%= aluno.id %>">
+                            <button type="submit" class="btn btn-link p-0 m-0" onclick="return confirm('Remover este aluno?')"><i class="bi bi-trash-fill text-danger"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        <% } %>
+    </tbody>
 </table>
