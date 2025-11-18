@@ -1,8 +1,17 @@
 <h1>Editar Professor</h1> 
-<form action="" method="POST"> 
-    <div class="form-group"> 
-        <label for="nome">Professor</label> 
-        <input type="text" class="form-control" id="nome" name="nome" value="" required> 
-    </div> 
-    <button type="submit" class="btn btn-primary">Atualizar</button> 
-</form> 
+<form action="/professores/edit" method="POST"> 
+    
+    <input type="hidden" name="id" value="<%= professor?.id || '' %>">
+
+    <div class="form-group"> 
+        <label for="nome">Professor</label> 
+                <input type="text" class="form-control" id="nome" name="nome" value="<%= professor?.nome || '' %>" required> 
+    </div> 
+    
+    <div class="form-group mt-2">
+        <label for="descricao">Descrição</label>
+        <textarea name="descricao" id="descricao" class="form-control" rows="3"><%= professor?.descricao || '' %></textarea>
+      </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Atualizar</button> 
+</form>
